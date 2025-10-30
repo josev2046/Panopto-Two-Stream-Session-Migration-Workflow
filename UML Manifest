@@ -1,0 +1,59 @@
+@startuml Panopto_Migration_Two_Stream_Professional_Neutral
+title Panopto Two-Stream Session Migration Workflow
+
+actor "User" as U
+participant "Source Panopto Instance\n" as S
+participant "Local Machine\n(Staging Area)" as L
+participant "Destination Panopto Instance\n" as D
+
+autonumber 1.0
+
+== 1. Stream Export Phase ==
+
+box "Source System Interaction" #LightYellow
+  U -> S: Access Session Settings
+ 
+  activate S
+ 
+  U -> S: **Request Export: Primary Stream**\n(Highest Quality Podcast MP4)
+  S -> L: **Data Transfer: Primary Stream** (.mp4 file)
+  note right: Typically the talking head or main presenter audio/video content.
+ 
+  U -> S: **Request Export: Secondary Stream**\n(Highest Quality Podcast MP4)
+  S -> L: **Data Transfer: Secondary Stream** (.mp4 file)
+  note right: Typically the presentation or screen capture content.
+ 
+  deactivate S
+end box
+
+== 2. Session Reconstruction Phase ==
+
+box "Destination System Interaction" #LightBlue
+  U -> D: Navigate to Target Folder
+  U -> D: Initiate **'Build a Session'** Feature
+ 
+  activate D
+ 
+  U -> L: Select and Initiate Upload: **Primary Stream**
+  L -> D: **Data Upload: Primary Stream**
+ 
+  U -> L: Select and Initiate Upload: **Secondary Stream**
+  L -> D: **Data Upload: Secondary Stream**
+ 
+  D -> D: Internal Processing and Stream Synchronisation
+end box
+
+== 3. Verification and Finalisation ==
+
+box "Quality Control" #LightGreen
+  U -> D: Access **Session Editor** for Sync Review
+  note right: Verify start times and audio alignment.
+ 
+  U -> D: **Apply Changes and Publish Session**
+ 
+  deactivate D
+ 
+  D --> U: **Notification: New Synchronised Session Created**
+end box
+
+@enduml
