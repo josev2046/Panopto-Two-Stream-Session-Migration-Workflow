@@ -1,6 +1,6 @@
 ## Panopto Multi-Stream Migration 
 
-This migration of a two-stream Panopto session (hosted in a different region) was completed in three straightforward phases: exporting files, transferring files, and rebuilding the session. As the user, here's what I did:
+This migration of a two-stream Panopto session (hosted in a different region) was completed in three straightforward phases: exporting files, transferring them, and rebuilding the session. As the user, here's what I did:
 
 <img width="1399" height="846" alt="image" src="https://github.com/user-attachments/assets/d07d8b72-f1a0-45d9-8d2a-f24e1e4fda18" />
 
